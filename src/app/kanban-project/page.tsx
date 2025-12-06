@@ -1,49 +1,33 @@
+import KanbanCard from "@/components/kanban/kanban-card";
 import { Box } from "@/components/ui/box";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Plus } from "lucide-react";
+
+const data = [
+  {
+    title: "To Do",
+    description: "Tasks to be done",
+  },
+  {
+    title: "In Progress",
+    description: "Tasks in progress",
+  },
+];
 
 export default function KanbanProjectPage() {
   return (
     <Box m={16} gap={16} className="w-fit">
-      <Button className="w-fit" prefix={<Plus />}>Add New Group</Button>
+      <Button className="w-fit" prefix={<Plus />}>
+        Add New Group
+      </Button>
 
-      <Card className="p-5">
-        <Card className="w-96 rounded-md">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-            <CardAction>
-              <Button prefix={<Plus />}>Add Task</Button>
-            </CardAction>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-        </Card>
-
-        <Card className="w-96 rounded-md">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-            <CardAction>
-              <Button prefix={<Plus />}>Add Task</Button>
-            </CardAction>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-        </Card>
-      </Card>
-
-      
+      {data.map((group, index) => (
+        <KanbanCard
+          key={index}
+          title={group.title}
+          description={group.description}
+        />
+      ))}
     </Box>
   );
 }
